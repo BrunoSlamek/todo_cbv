@@ -8,8 +8,40 @@
 </head>
 <body>
     <div class="container">
-        <h1>Index page</h1>
+        <div class="row">
+            <h1>Tarefas</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">title</th>
+                        <th scope="col">description</th>
+                        <th scope="col">priority</th>
+                        <th scope="col">Active</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for todo in todos %}
+                        <tr>
+                            <td>{{ todo.id }}</td>
+                            <td>{{ todo.title }}</td>
+                            <td>{{ todo.description }}</td>
+                            <td>{{ todo.priority }}</td>
+                            <td>{{ todo.is_active }}</td>
+                            <td>
+                                <a class="btn btn-warning" href="#">Edit</a>
+                                <a class="btn btn-danger" href="#">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <button><a href="#" type="button" class="btn btn-success">New Task</a></button>
+        </div>
     </div>
+
 {% bootstrap_javascript jquery='full' %}
 </body>
 </html>

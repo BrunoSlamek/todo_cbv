@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'todo',
     'bootstrap4',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [

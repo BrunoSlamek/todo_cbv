@@ -1,27 +1,20 @@
-{% load bootstrap4 %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Index</title>
-    {% bootstrap_css %}
-</head>
-<body>
-    <div class="container">
-        <div class="row">
-            <h1>Tarefas</h1>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
+{% extends 'base.html' %}
+{% load humanize %}
+{% block content %}
+    <div class="row">
+        <h1>ToDos</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
                         <th scope="col">#</th>
                         <th scope="col">title</th>
                         <th scope="col">description</th>
                         <th scope="col">priority</th>
                         <th scope="col">Active</th>
                         <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
+                </tr>
+            </thead>
+            <tbody>
                     {% for todo in todos %}
                         <tr>
                             <td>{{ todo.id }}</td>
@@ -30,18 +23,13 @@
                             <td>{{ todo.priority }}</td>
                             <td>{{ todo.is_active }}</td>
                             <td>
-                                <a class="btn btn-warning" href="#">Edit</a>
-                                <a class="btn btn-danger" href="#">Delete</a>
+                                <a class="btn btn-warning" href="{% url 'upd_todo' todo.pk %}">Edit</a>
+                                <a class="btn btn-danger" href="{% url 'del_todo' todo.pk %}">Delete</a>
                             </td>
                         </tr>
                     {% endfor %}
-                </tbody>
-            </table>
-
-            <button><a href="#" type="button" class="btn btn-success">New Task</a></button>
-        </div>
+            </tbody>
+        </table>
+        <button><a href="{% url 'add_todo' %}" type="button" class="btn btn-success">New task</a></button>
     </div>
-
-{% bootstrap_javascript jquery='full' %}
-</body>
-</html>
+{% endblock %}
